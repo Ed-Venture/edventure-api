@@ -8,11 +8,9 @@ from PyPDF2 import PdfMerger
 
 app = Flask(__name__)
 # Initialize Firestore DB
-filename = os.path.join('firebase', os.path.basename('key.json'))
-urllib.request.urlretrieve("https://firebasestorage.googleapis.com/v0/b/ed-tech-ureckathon.appspot.com/o/keys%2Fkey.json?alt=media&token=895a4d73-dfef-4315-9b2d-f80de976ca5f", filename)
-key_path="firebase"
-file_path = os.path.join(key_path, filename)  
-cred = credentials.Certificate(filename)
+# filename = os.path.join('firebase', os.path.basename('key.json'))
+# urllib.request.urlretrieve("https://firebasestorage.googleapis.com/v0/b/ed-tech-ureckathon.appspot.com/o/keys%2Fkey.json?alt=media&token=895a4d73-dfef-4315-9b2d-f80de976ca5f", filename) 
+cred = credentials.Certificate('key.json')
 default_app = initialize_app(cred)
 db = firestore.client()
 assign_ref = db.collection('assignments')
